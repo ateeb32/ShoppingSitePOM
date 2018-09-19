@@ -13,6 +13,9 @@ public class ShoppingHomePage {
 	@FindBy(xpath = "//*[@id=\"block_top_menu\"]/ul/li[1]/a")
 	private WebElement hoverWomen;
 	
+	@FindBy(xpath = "//*[@id=\"block_top_menu\"]/ul/li[1]/ul/li[1]/ul/li[1]/a")
+	private WebElement tShirtsLink;
+	
 	@FindBy(xpath = "//*[@id=\"header_logo\"]/a/img")
 	private WebElement backToHome;
 
@@ -27,12 +30,16 @@ public class ShoppingHomePage {
 		Actions action = new Actions(driver);
 		action.moveToElement(hoverWomen).perform();
 		Thread.sleep(2000);
+//		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+//		WebElement myHoverElement = driver.findElement(By.xpath("//*[@id=\\\"block_top_menu\\\"]/ul/li[1]/ul/li[1]/ul/li[1]/a"));
+//		action.moveToElement(myHoverElement).click().perform();
 		
 		WebElement myDynamicElement = (new WebDriverWait(driver, 10)).until(
-				ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[1]/ul/li[1]/ul/li[1]/a")));
+				ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[1]/ul")));
 		
-		action.moveToElement(myDynamicElement).click().perform();
-	
+		action.moveToElement(myDynamicElement).perform();
+		
+		tShirtsLink.click();
 		
 	}
 	

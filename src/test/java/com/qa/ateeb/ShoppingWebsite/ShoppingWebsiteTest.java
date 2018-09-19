@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,10 +32,11 @@ public class ShoppingWebsiteTest {
 		
 		homePage.dropdownMenu(driver);
 		Thread.sleep(2000);
-//		homePage.clickHome();
-//		Thread.sleep(2000);
-		
 		assertEquals("Navigated to incorrect page", "T-shirts - My Store", driver.getTitle());
+		
+		homePage.clickHome();
+		Thread.sleep(2000);
+		assertEquals("Navigated to incorrect page", "My Store", driver.getTitle());
 		
 //		homePage.writeSeachBar();
 //		homePage.clickSearch();
